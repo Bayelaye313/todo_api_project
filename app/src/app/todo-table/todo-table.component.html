@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Todo</th>
+        <th scope="col">Created</th>
+        <th scope="col">Due</th>
+        <th scope="col">Complete</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngif="todos.length === 0">
+        <td colspan="4">
+            Nothing Todo today!
+        </td>
+      </tr>
+      <tr *ngfor="let todo of todos" [ngClass]="{'done': todo.done}" >
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>twitter</td>
+      </tr>
+    </tbody>
+  </table>

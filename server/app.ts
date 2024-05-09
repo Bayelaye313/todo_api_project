@@ -2,6 +2,7 @@ import express, {Request, Response, application} from "express";
 import cors from "cors";
 require('dotenv').config();
 import { AppDataSource } from "./DataSource";
+import { todo } from "./todo";
 
 
 const app = express();
@@ -12,8 +13,47 @@ app.use(cors());
 AppDataSource.initialize()
     .then(() => {
         console.log("here you can start to work with your database");
-    })
-    .catch((error) => console.log("erreur",error))
+        const todoRepository = AppDataSource.getRepository(todo)
 
-    app.listen(process.env.PORT || 3000);
-    console.log('server started on port '+process.env.PORT || 3000)
+        app.get("/todos", async (req: Request, res: Response) => {
+            try {
+                const allTodos = await todoRepository.find();
+                return res.json({
+                    status: "ok",
+                    data: allTodos
+                });
+            } catch (error) {
+                console.error("Error fetching todos:", error);
+                return res.status(500).json({
+                    status: "error",
+                    message: "Failed to fetch todos"
+                });
+            }
+        });
+
+        app.post("/todos", async (req: Request, res: Response) => {
+            try {
+                const data = req.body;
+                const task = await todoRepository.save(data);
+                return res.json({
+                    status: "ok",
+                    data: task
+                });
+            } catch (error) {
+                console.error("Error saving todo:", error);
+                return res.status(500).json({
+                    status: "error",
+                    message: "Failed to save todo"
+                });
+            }
+        });
+
+        app.listen(process.env.PORT || 3000, () => {
+            console.log(`Server started on port ${process.env.PORT || 3000}`);
+        });
+
+    })
+    .catch((error) => {
+        console.error("Database initialization error:", error);
+        process.exit(1);
+    });
