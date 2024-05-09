@@ -5,16 +5,17 @@
   <app-todo [todos]="allTodos">
 
   </app-todo>
-  <form>
-    <div class="form-group">
+  <form class="form-inline">
+    <div class="form-group mb-2">
       <label for="newTodoTask">Todo</label>
       <input type="text" class="form-control" name="newTodoTask" placeholder="Enter Task">
     </div>
-    <div class="form-group">
-      <label for="newTodoDueDate">New Todo date</label>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="newTodoDueDate">Todo At</label>
       <input type="date" class="form-control" name="newTodoDueDate">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mb-2">Submit</button>
   </form>
+  
 </div>
 
