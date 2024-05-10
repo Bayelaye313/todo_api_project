@@ -17,4 +17,8 @@ export class TodoService {
       map(response =>response.data)
     )
   }
+
+  createNewTodo(newTodo:{task: string, dateDue: string}){
+    return this.http.post(`${this.baseUrl}/todos`, newTodo);
+  }
 }

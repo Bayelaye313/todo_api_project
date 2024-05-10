@@ -5,16 +5,16 @@
   <app-todo [todos]="allTodos">
 
   </app-todo>
-  <form class="form-inline">
+  <form (submit)="createNewTodo()" class="form-inline">
     <div class="form-group mb-2">
-      <label for="newTodoTask">Todo</label>
-      <input type="text" class="form-control" name="newTodoTask" placeholder="Enter Task">
+      <label for="newTodoTask">Add Todo</label>
+      <input [(ngModel)] = "newTodotask" type="text" class="form-control" name="newTodoTask" placeholder="Enter Task">
     </div>
     <div class="form-group mx-sm-3 mb-2">
       <label for="newTodoDueDate">Todo At</label>
-      <input type="date" class="form-control" name="newTodoDueDate">
+      <input [(ngModel)] = "newTodoDate" type="date" class="form-control" name="newTodoDueDate">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    <button type="submit" class="btn btn-primary mb-2">Create</button>
   </form>
   
 </div>

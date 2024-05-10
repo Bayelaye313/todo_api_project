@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Itodo } from '../../../server/model/Itodo';
 import { TodoService } from './todo.service';
+import { mergeMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { TodoService } from './todo.service';
 export class AppComponent implements OnInit {
   title = 'app';
   allTodos: Itodo[] = [];
+  newTodotask:string = '';
+  newTodoDate: string = '';
   constructor(private todoService: TodoService){};
 
   ngOnInit(): void {
@@ -22,5 +25,22 @@ export class AppComponent implements OnInit {
         }
       }
     )
+  }
+
+  createNewTodo(){
+    const todoPayload = {
+      task: this.newTodotask,
+      dateDue: this.newTodoDate
+    };
+    this.todoService.createNewTodo(todoPayload)
+    .pipe(
+      mergeMap(()=>this.todoService.getTodos()),
+      tap((refreshedTodos)=> this.allTodos = refreshedTodos)
+    )
+    .subscribe({
+      next: (rslt) =>{
+        console.log(rslt)
+      }
+    })
   }
 }

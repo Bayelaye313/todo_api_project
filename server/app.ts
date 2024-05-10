@@ -33,8 +33,12 @@ AppDataSource.initialize()
 
         app.post("/todos", async (req: Request, res: Response) => {
             try {
-                const data = req.body;
-                const task = await todoRepository.save(data);
+                const data: {task:string, dateDue: string} = req.body;
+                const newTodo = {
+                    ...data,
+                    done: false,
+                };
+                const task = await todoRepository.save(newTodo);
                 return res.json({
                     status: "ok",
                     data: task
