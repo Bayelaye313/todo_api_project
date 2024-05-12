@@ -17,7 +17,7 @@
         <td>{{ todo.createdAt | date }}</td>
         <td>{{ todo.dateDue | date }}</td>
         <td><input (change)="toggleTodoDoneState(todo)" type="checkbox" [checked]="todo.done" /></td>
-        <td><button (click)="removeTodo(todo)">Remove</button></td>
+        <td><button (click)="removeTodo(todo)" class="btn btn-danger mb-2">Remove</button></td>
       </tr>
     </tbody>
   </table>

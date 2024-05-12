@@ -1,11 +1,11 @@
 
-<div class="container">
+<div class="todo-container">
   <h1>todos</h1>
 
   <app-todo (deleted)="deleteTodo($event)" (changed)="setTodoDoneState($event)" [todos]="allTodos">
 
   </app-todo>
-  <form (submit)="createNewTodo()" class="form-inline">
+  <form (submit)="createNewTodo()" class="form-inline create-todo" >
     <div class="form-group mb-2">
       <label for="newTodoTask">Add Todo</label>
       <input [(ngModel)] = "newTodotask" type="text" class="form-control" name="newTodoTask" placeholder="Enter Task">

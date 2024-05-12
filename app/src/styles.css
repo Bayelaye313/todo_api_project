@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .create-todo {
+    display: flex;
+    margin-left: 20px; 
+  }
+  
+  .create-todo input {
+    width: 200px; 
+  }
+  
+  .create-todo button {
+    margin-top: 1.5rem;
+    height: 2.5rem;
+    padding: 0 10px; 
+  }
+  
