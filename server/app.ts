@@ -52,6 +52,49 @@ AppDataSource.initialize()
             }
         });
 
+        app.patch("/todos/:id", async (req: Request, res: Response) => {
+            try {
+                const isTodone = req.body.done;
+                const id = parseInt(req.params.id);
+                const findTodo = await todoRepository.findOneBy({id});
+                let rslt;
+                if (findTodo) {
+                    findTodo.done = isTodone;
+                    rslt = await todoRepository.save(findTodo)
+
+                }
+                return res.json({
+                    status: "ok",
+                    data: rslt,
+                });
+            } catch (error) {
+                console.error("Error saving todo:", error);
+                return res.status(500).json({
+                    status: "error",
+                    message: "Failed to save todo"
+                });
+            }
+        });
+        app.delete("/todos/:id", async (req: Request, res: Response) => {
+            try {
+                const id = parseInt(req.params.id);
+                const rslt = await todoRepository.delete({id})
+
+                return res.json({
+                    status: "ok",
+                    data: rslt,
+                });
+            } catch (error) {
+                console.error("Error removing todo:", error);
+                return res.status(500).json({
+                    status: "error",
+                    message: "Failed to save todo"
+                });
+            }
+        });
+
+
+
         app.listen(process.env.PORT || 3000, () => {
             console.log(`Server started on port ${process.env.PORT || 3000}`);
         });
