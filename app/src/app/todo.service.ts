@@ -21,4 +21,15 @@ export class TodoService {
   createNewTodo(newTodo:{task: string, dateDue: string}){
     return this.http.post(`${this.baseUrl}/todos`, newTodo);
   }
+
+  updateTodoDoneState(todo:Itodo){
+    const {id, done} = todo;
+    return this.http.patch(`${this.baseUrl}/todos/${id}`, {done});
+  }
+  
+  deleteTodo(todo:Itodo){
+    const {id} = todo;
+    return this.http.delete(`${this.baseUrl}/todos/${id}`);
+  }
+
 }

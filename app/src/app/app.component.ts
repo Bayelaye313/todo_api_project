@@ -43,4 +43,23 @@ export class AppComponent implements OnInit {
       }
     })
   }
+  setTodoDoneState(event:Itodo){
+    this.todoService.updateTodoDoneState(event)
+    .subscribe({
+      next: (reslt) => {
+        console.log(reslt)
+      }
+    })
+  }
+  deleteTodo(event: Itodo){
+    this.todoService.deleteTodo(event)
+    .pipe(
+      mergeMap(()=>this.todoService.getTodos()),
+      tap((refreshTodo)=>this.allTodos = refreshTodo)
+    ).subscribe({
+      next: (rslt) =>{
+        console.log(rslt)
+      }
+    })
+  }
 }

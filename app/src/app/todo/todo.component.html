@@ -16,8 +16,8 @@
         <td>{{ todo.task }}</td>
         <td>{{ todo.createdAt | date }}</td>
         <td>{{ todo.dateDue | date }}</td>
-        <td><input type="checkbox" [(ngModel)]="todo.done" /></td>
-        <td><button>Remove</button></td>
+        <td><input (change)="toggleTodoDoneState(todo)" type="checkbox" [checked]="todo.done" /></td>
+        <td><button (click)="removeTodo(todo)">Remove</button></td>
       </tr>
     </tbody>
   </table>

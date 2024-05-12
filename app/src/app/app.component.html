@@ -2,7 +2,7 @@
 <div class="container">
   <h1>todos</h1>
 
-  <app-todo [todos]="allTodos">
+  <app-todo (deleted)="deleteTodo($event)" (changed)="setTodoDoneState($event)" [todos]="allTodos">
 
   </app-todo>
   <form (submit)="createNewTodo()" class="form-inline">
