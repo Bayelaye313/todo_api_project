@@ -1,8 +1,8 @@
-# Todo API Project
+#Todo API Project
 This project contains a backend server for a Todo API using MySQL as the database. 
 The server runs on `localhost` port `3000`.
 
-** Installation **
+**Installation**
 To run the server locally, follow these steps:
 Clone this repository:
 git clone (https://github.com/Bayelaye313/todo_api_project.git)
@@ -13,7 +13,7 @@ cd todo_api_project
 Install dependencies:
 npm install
 
-##Usage
+## Usage
 To start the server, run the following command:
 npm run serve
 
