@@ -1,48 +1,53 @@
-#Todo API Project
+# Todo API Project
 
-This project contains a backend server for a Todo API using MySQL as the database. 
-The server runs on `localhost` port `3000`.
+This project contains a backend server for a Todo API using MySQL as the database. The server runs on `localhost` port `3000`.
 
-**Installation**
+## Installation
+
 To run the server locally, follow these steps:
-Clone this repository:
-git clone `(https://github.com/Bayelaye313/todo_api_project.git)` 
 
-Navigate to the project directory:
-cd todo_api_project
+1. Clone this repository:
+   ```git clone https://github.com/Bayelaye313/todo_api_project.git```
 
-- Install dependencies:
+2. Navigate to the project directory:
+    ``cd todo_api_project``
+
+3.Install dependencies:
 - npm install
 
-## Usage
+# Usage
+
 To start the server, run the following command:
-npm run serve
+``npm run serve``
+The server will start running on (http://localhost:3000).
 
-The server will start running on `(http://localhost:3000)` .
+# Database
+Ensure you have MySQL installed and running locally on your machine.
 
-##Database
-- Ensure you have MySQL installed and running locally on your machine.
-
-The database configuration for the server can be found in src/DataSource.ts. 
+The database configuration for the server can be found in src/DataSource.ts.
 Modify the database connection settings as needed for your MySQL setup.
 
-##API Base URL
+## API Base URL
 The base URL for accessing the Todo API is:
-(http://localhost:3000)
+http://localhost:3000
 
-##Endpoints
-GET /todos: Get all todos.
-POST /todos: Create a new todo.
-PATCH /todos/:id: Update a todo by ID.
-DELETE /todos/:id: Delete a todo by ID.
+## Endpoints
+- GET /todos: Get all todos.
+- POST /todos: Create a new todo.
+- PATCH /todos/:id: Update a todo by ID.
+- DELETE /todos/:id: Delete a todo by ID.
 
-##Technologies Used
-###backend:
-Node.js
-Express.js
-MySQL
-TypeORM
+## Technologies Used
+- Backend:
+- Node.js
+- Express.js
+- MySQL
+- TypeORM
 
-###Frontend:
-Angular
-cd to App and run s
+## Frontend:
+- Angular (cd to app and run serve)
+
+
+
+
+
